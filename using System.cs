@@ -1,27 +1,40 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text
-using System.Threading;
-using.System.Threading.Tasks;
 
-namespace Loop 
+class Student
 {
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            bool isWorking = true;
-            while (isWorking)
-            {
-                Console.WriteLine("The time is: {0}", DateTime.Now.ToString());
-                Thread.Sleep(1000);
+    public string Name { get; set; }
+    public string Surname { get; set; }
+    public string Number { get; set; }
+    public string Department { get; set; }
+}
 
-                if (DateTime.Now.Second == 50) 
-                {
-                    isWorking = false;
-                }
-            }
+class Program
+{
+    static void Main()
+    {
+       
+        List<Student> students = new List<Student>();
+        for (int i = 1; i <= 10; i++)
+        {
+            Console.WriteLine($"Write the details for Student {i}:");
+            string name = Console.ReadLine();
+            string surname = Console.ReadLine();
+            string number = Console.ReadLine();
+            string department = Console.ReadLine();
+            Student studentInstance = new Student
+            {
+                Name = name,
+                Surname = surname,
+                Number = number,
+                Department = department
+            };
+            students.Add(studentInstance);
+        
+        Console.WriteLine("\nDetails of all students:");
+        foreach (var student in students)
+        {
+            Console.WriteLine($"Name: {student.Name}, Surname: {student.Surname}, Number: {student.Number}, Department: {student.Department}");
         }
     }
 }
